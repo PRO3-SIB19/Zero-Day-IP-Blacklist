@@ -21,4 +21,4 @@ cd Zero-Day-IP-Blacklist
 sudo pip3 install -U -r requirements.txt
 
 cd ..
-sudo code --user-data-dir='~/code_profiles/heralding/data'
+sudo code --user-data-dir = ~/code_profiles/heralding/data
