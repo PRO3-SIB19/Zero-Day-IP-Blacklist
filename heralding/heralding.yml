@@ -18,6 +18,11 @@ activity_logging:
     # set to "" to disable
     authentication_log_file: "log_auth.csv"
 
+  tcp:
+    enabled: true
+    ip_adress: 127.0.0.1
+    port: 12345
+
   syslog:
     enabled: false
 
@@ -41,7 +46,7 @@ hash_cracker:
 # protocols to enable
 capabilities:
   ftp:
-    enabled: true
+    enabled: false
     port: 21
     timeout: 30
     protocol_specific_data:
@@ -57,7 +62,7 @@ capabilities:
       max_attempts: 3
 
   pop3:
-    enabled: true
+    enabled: false
     port: 110
     timeout: 30
     protocol_specific_data:
@@ -65,7 +70,7 @@ capabilities:
       banner: "+OK POP3 server ready"
 
   pop3s:
-    enabled: true
+    enabled: false
     port: 995
     timeout: 30
     protocol_specific_data:
@@ -85,12 +90,12 @@ capabilities:
         serial_number: 0
 
   postgresql:
-    enabled: true
+    enabled: false
     port: 5432
     timeout: 30
 
   imap:
-    enabled: true
+    enabled: false
     port: 143
     timeout: 30
     protocol_specific_data:
@@ -98,7 +103,7 @@ capabilities:
       banner: "* OK IMAP4rev1 Server Ready"
 
   imaps:
-    enabled: true
+    enabled: false
     port: 993
     timeout: 30
     protocol_specific_data:
@@ -132,7 +137,7 @@ capabilities:
       banner: ""
 
   https:
-    enabled: true
+    enabled: false
     port: 443
     timeout: 30
     protocol_specific_data:
@@ -151,7 +156,7 @@ capabilities:
         serial_number: 0
 
   smtp:
-    enabled: true
+    enabled: false
     port: 25
     timeout: 30
     protocol_specific_data:
@@ -160,7 +165,7 @@ capabilities:
       fqdn: ""
 
   smtps:
-    enabled: true
+    enabled: false
     port: 465
     timeout: 30
     protocol_specific_data:
@@ -179,17 +184,17 @@ capabilities:
         serial_number: 0
 
   vnc:
-    enabled: true
+    enabled: false
     port: 5900
     timeout: 30
 
   socks5:
-    enabled: true
+    enabled: false
     port: 1080
     timeout: 30
 
   mysql:
-    enabled: true
+    enabled: false
     port: 3306
     timeout: 30
     

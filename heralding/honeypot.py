@@ -23,6 +23,7 @@ import heralding.capabilities.handlerbase
 
 from heralding.reporting.reporting_relay import ReportingRelay
 from heralding.reporting.file_logger import FileLogger
+from heralding.reporting.tcp_logger import TcpLogger
 from heralding.reporting.syslog_logger import SyslogLogger
 from heralding.reporting.hpfeeds_logger import HpFeedsLogger
 from heralding.reporting.curiosum_integration import CuriosumIntegration
@@ -98,6 +99,17 @@ class Honeypot:
             common.on_unhandled_task_exception)
         self._loggers.append(file_logger)
 
+      if 'tcp' in self.config['activity_logging'] and self.config[
+          'activity_logging']['tcp']['enabled']:
+        target_ip = self.config['activity_logging']['tcp'][
+            'ip_adress']
+        target_port = self.config['activity_logging']['tcp'][
+            'port']
+        tcp_logger = TcpLogger(target_ip,target_port)
+        self.tcp_logger_task = self.loop.run_in_executor(None, tcp_logger.start)
+        self.tcp_logger_task.add_done_callback(common.on_unhandled_task_exception)
+        self._loggers.append(tcp_logger)
+        
       if 'syslog' in self.config['activity_logging'] and self.config[
           'activity_logging']['syslog']['enabled']:
         sys_logger = SyslogLogger()
