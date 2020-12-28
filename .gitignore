@@ -54,5 +54,4 @@ admin_passwd_hash
 *.csv
 
 venv/*
-heralding/heralding.yml
-log_session.json
+log_session.json   
