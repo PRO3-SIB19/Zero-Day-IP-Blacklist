@@ -13,6 +13,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import socket
+
 from heralding.reporting.base_logger import BaseLogger
 
 class TcpLogger(BaseLogger):
@@ -23,10 +25,19 @@ class TcpLogger(BaseLogger):
     
     def handle_auth_log(self, data):
 
-        print(data["timestamp"]+";"+
-            data["source_ip"]+";"+
-            str(data["source_port"])+";"+
-            data["destination_ip"]+";"+
-            str(data["destination_port"])+";"+
-            data["protocol"]
-        )
+        sendstring = data["timestamp"] + ";"
+        sendstring += data["source_ip"] + ";"
+        sendstring += str(data["source_port"])+";"
+        sendstring += data["destination_ip"]+";"
+        sendstring += str(data["destination_port"])+";"
+        sendstring += data["protocol"]
+
+        print(sendstring)
+
+        HOST = '127.0.0.1'  # The server's hostname or IP address
+        PORT = 12345        # The port used by the server
+
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect((HOST, PORT))
+            s.sendall(bytes(sendstring, 'utf-8'))
+
