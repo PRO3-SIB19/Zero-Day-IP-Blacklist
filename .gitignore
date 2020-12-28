@@ -55,3 +55,4 @@ admin_passwd_hash
 
 venv/*
 heralding/heralding.yml
+log_session.json

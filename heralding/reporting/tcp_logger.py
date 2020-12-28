@@ -27,5 +27,6 @@ class TcpLogger(BaseLogger):
             data["source_ip"]+";"+
             str(data["source_port"])+";"+
             data["destination_ip"]+";"+
-            str(data["destination_port"])
+            str(data["destination_port"])+";"+
+            data["protocol"]
         )
