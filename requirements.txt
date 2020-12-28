@@ -2,10 +2,11 @@ pycryptodome
 nose
 aiosmtpd
 asyncssh>=2.0.0
+cryptography
 pyOpenSSL
 pyaml
 pyzmq
-psycopg2
+psycopg2-binary
 hpfeeds3
 rsa
 requests
